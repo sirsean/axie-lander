@@ -39,7 +39,6 @@ task('plot-owner', 'Find out who owns a land plot, even if it is staked')
     .addParam('row', 'The row value of the plot')
     .addParam('col', 'The col value of the plot')
     .setAction(async ({ row, col }, hre) => {
-        const r = hre.ethers.BigNumber.from(row);
         const landContract = await getLandContract(hre);
         const tokenId = await landContract.getTokenId(hre.ethers.BigNumber.from(row), hre.ethers.BigNumber.from(col));
         const landOwner = await landContract.ownerOf(tokenId);
